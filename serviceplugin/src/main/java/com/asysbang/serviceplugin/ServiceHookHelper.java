@@ -69,6 +69,8 @@ public class ServiceHookHelper {
         }
     }
 
+    private String oriServiceInteneName;
+
     private class IActivityManagerHandler implements InvocationHandler {
 
         private Object mOrigin;
@@ -92,11 +94,13 @@ public class ServiceHookHelper {
                 Log.e(TAG, "======>>> IActivityManagerHandler " + originIntent.toString());
                 if (EXTRA_INTENT_HOOK.equals(originIntent.getStringExtra(EXTRA_INTENT_HOOK))) {
                     Intent proxyIntent = new Intent();
-                    Log.e(TAG, "======FakeService");
+                    oriServiceInteneName = originIntent.getComponent().getClassName();
+                    Log.e(TAG, "======oriServiceInteneName : "+oriServiceInteneName);
                     ComponentName componentName = new ComponentName(mContext, FakeService.class);
                     proxyIntent.setComponent(componentName);
                     proxyIntent.putExtra(EXTRA_INTENT_KEY, originIntent);
                     args[index] = proxyIntent;
+
                 }
             }
             return method.invoke(mOrigin, args);
@@ -225,7 +229,7 @@ public class ServiceHookHelper {
                             Log.e(TAG, "======>>> info :" + info);
                             Log.e(TAG, "======>>> infoapplicationInfo :" + info.applicationInfo);
                             Log.e(TAG, "======>>> infoname :" + info.name);
-                            info.name = "com.asysbang.serviceplugin.MainService";
+                            info.name = oriServiceInteneName;//"com.asysbang.serviceplugin.MainService";
 
 //                            Field intentField = msg.obj.getClass().getDeclaredField("intent");
 //                            intentField.setAccessible(true);

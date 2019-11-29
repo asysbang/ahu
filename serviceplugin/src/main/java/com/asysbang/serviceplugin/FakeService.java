@@ -17,6 +17,6 @@ public class FakeService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d(TAG,"===oncreate");
+        Log.d(TAG,"===I am FakeService");
     }
 }

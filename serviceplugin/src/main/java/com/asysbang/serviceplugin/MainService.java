@@ -26,8 +26,14 @@ public class MainService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d(TAG,"===oncreate");
+        Log.d(TAG,"===I am Main Service");
+
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
         showNotification();
+        return super.onStartCommand(intent, flags, startId);
     }
 
     private void showNotification() {
