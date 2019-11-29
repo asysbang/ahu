@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView style="@style/BaseText"
+        android:text="Hello World!" />
+
+    <Button android:onClick="showNotification"
+        style="@style/BaseText"
+        android:text="Show Notification" />
+
+    <Button android:onClick="startHideActivity"
+        style="@style/BaseText"
+        android:text="Start Hide Activity" />
+
+    <Button android:onClick="hookActivity"
+        style="@style/BaseText"
+        android:text="Hook Activity" />
+
+    <Button
+        style="@style/BaseText"
+        android:text="Get PkgInfo" />
+
+    <Button
+        style="@style/BaseText"
+        android:text="Install Plugin" />
+
+    <Button
+        style="@style/BaseText"
+        android:text="Uninstall Plugin" />
+
+    <Button android:onClick="test"
+        style="@style/BaseText"
+        android:text="Test" />
+
+</LinearLayout>
